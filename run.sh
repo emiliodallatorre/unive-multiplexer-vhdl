@@ -14,4 +14,4 @@ echo "Elaborating design..."
 
 
 echo "Elaborating testbench..."
- ghdl -r MUX_4_1_TB vcd=wave.vcd
+ ghdl -r MUX_4_1_TB --wave=output_waveform.ghw
