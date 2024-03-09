@@ -1,0 +1,15 @@
+v 4
+file . "testbench.vhd" "b985368c2d14c3663db9419251dec50f77becfdd" "20240309115949.285":
+  entity mux_4_1_tb at 1( 0) + 0 on 57;
+  architecture behavioral of mux_4_1_tb at 7( 89) + 0 on 58;
+file . "design.vhd" "84395f20979005acf375bf42b32df311e6da5136" "20240309115949.270":
+  entity and_gate_tb at 3( 13) + 0 on 47;
+  architecture behavioral of and_gate_tb at 14( 193) + 0 on 48;
+  entity nand_gate_tb at 19( 288) + 0 on 49;
+  architecture behavioral of nand_gate_tb at 30( 470) + 0 on 50;
+  entity nor_gate_tb at 35( 571) + 0 on 51;
+  architecture behavioral of nor_gate_tb at 46( 751) + 0 on 52;
+  entity not_gate_tb at 51( 850) + 0 on 53;
+  architecture behavioral of not_gate_tb at 61( 1004) + 0 on 54;
+  entity mux_4_1 at 67( 1099) + 0 on 55;
+  architecture behavioral of mux_4_1 at 78( 1292) + 0 on 56;
