@@ -88,20 +88,15 @@ ARCHITECTURE Behavioral OF MUX_4_1 IS
             Y : OUT STD_LOGIC
         );
     END COMPONENT;
-    SIGNAL NOT_S0, NOT_S1 : STD_LOGIC;
-    SIGNAL Y0, Y1, Y2, Y3 : STD_LOGIC;
+    SIGNAL NOT_S0, NOT_S1, A_AND_S0, B_AND_S0, C_AND_S1, D_AND_S1, Y1, Y2 : STD_LOGIC;
 BEGIN
-    -- Invert select signals
     U1 : NAND_GATE PORT MAP(A => S0, B => S0, Y => NOT_S0);
     U2 : NAND_GATE PORT MAP(A => S1, B => S1, Y => NOT_S1);
-
-    -- Generate NAND outputs
-    U3 : NAND_GATE PORT MAP(A => A, B => NOT_S0, Y => Y0);
-    U4 : NAND_GATE PORT MAP(A => B, B => S0, Y => Y1);
-    U5 : NAND_GATE PORT MAP(A => C, B => NOT_S1, Y => Y2);
-    U6 : NAND_GATE PORT MAP(A => D, B => S1, Y => Y3);
-
-    -- Combine outputs with NOR gate
-    U7 : NOR_GATE PORT MAP(A => Y0, B => Y1, Y => Y);
-    U8 : NOR_GATE PORT MAP(A => Y2, B => Y3, Y => Y);
+    U3 : NAND_GATE PORT MAP(A => A, B => NOT_S0, Y => A_AND_S0);
+    U4 : NAND_GATE PORT MAP(A => B, B => S0, Y => B_AND_S0);
+    U5 : NAND_GATE PORT MAP(A => C, B => NOT_S1, Y => C_AND_S1);
+    U6 : NAND_GATE PORT MAP(A => D, B => S1, Y => D_AND_S1);
+    U7 : NOR_GATE PORT MAP(A => A_AND_S0, B => B_AND_S0, Y => Y1);
+    U8 : NOR_GATE PORT MAP(A => C_AND_S1, B => D_AND_S1, Y => Y2);
+    U9 : NOR_GATE PORT MAP(A => Y1, B => Y2, Y => Y);
 END ARCHITECTURE Behavioral;
