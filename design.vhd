@@ -3,15 +3,15 @@
 LIBRARY IEEE;
 USE IEEE.std_logic_1164.ALL;
 
-ENTITY AND_GATE_TB IS
+ENTITY AND_GATE IS
     PORT (
         A : IN STD_LOGIC;
         B : IN STD_LOGIC;
         Y : OUT STD_LOGIC
     );
-END AND_GATE_TB;
+END AND_GATE;
 
-ARCHITECTURE Behavioral OF AND_GATE_TB IS
+ARCHITECTURE Behavioral OF AND_GATE IS
 BEGIN
     Y <= A AND B;
 END Behavioral;
@@ -19,15 +19,15 @@ END Behavioral;
 LIBRARY IEEE;
 USE IEEE.std_logic_1164.ALL;
 
-ENTITY NAND_GATE_TB IS
+ENTITY NAND_GATE IS
     PORT (
         A : IN STD_LOGIC;
         B : IN STD_LOGIC;
         Y : OUT STD_LOGIC
     );
-END NAND_GATE_TB;
+END NAND_GATE;
 
-ARCHITECTURE Behavioral OF NAND_GATE_TB IS
+ARCHITECTURE Behavioral OF NAND_GATE IS
 BEGIN
     Y <= NOT (A AND B);
 END Behavioral;
@@ -35,15 +35,15 @@ END Behavioral;
 LIBRARY IEEE;
 USE IEEE.std_logic_1164.ALL;
 
-ENTITY NOR_GATE_TB IS
+ENTITY NOR_GATE IS
     PORT (
         A : IN STD_LOGIC;
         B : IN STD_LOGIC;
         Y : OUT STD_LOGIC
     );
-END NOR_GATE_TB;
+END NOR_GATE;
 
-ARCHITECTURE Behavioral OF NOR_GATE_TB IS
+ARCHITECTURE Behavioral OF NOR_GATE IS
 BEGIN
     Y <= NOT (A OR B);
 END Behavioral;
@@ -51,14 +51,14 @@ END Behavioral;
 LIBRARY IEEE;
 USE IEEE.std_logic_1164.ALL;
 
-ENTITY NOT_GATE_TB IS
+ENTITY NOT_GATE IS
     PORT (
         A : IN STD_LOGIC;
         Y : OUT STD_LOGIC
     );
-END NOT_GATE_TB;
+END NOT_GATE;
 
-ARCHITECTURE Behavioral OF NOT_GATE_TB IS
+ARCHITECTURE Behavioral OF NOT_GATE IS
 BEGIN
     Y <= NOT A;
 END Behavioral;
@@ -76,13 +76,13 @@ ENTITY MUX_4_1 IS
 END ENTITY MUX_4_1;
 
 ARCHITECTURE Behavioral OF MUX_4_1 IS
-    COMPONENT NAND_GATE_TB
+    COMPONENT NAND_GATE
         PORT (
             A, B : IN STD_LOGIC;
             Y : OUT STD_LOGIC
         );
     END COMPONENT;
-    COMPONENT NOR_GATE_TB
+    COMPONENT NOR_GATE
         PORT (
             A, B : IN STD_LOGIC;
             Y : OUT STD_LOGIC
@@ -92,16 +92,16 @@ ARCHITECTURE Behavioral OF MUX_4_1 IS
     SIGNAL Y0, Y1, Y2, Y3 : STD_LOGIC;
 BEGIN
     -- Invert select signals
-    U1 : NAND_GATE_TB PORT MAP(A => S0, B => S0, Y => NOT_S0);
-    U2 : NAND_GATE_TB PORT MAP(A => S1, B => S1, Y => NOT_S1);
+    U1 : NAND_GATE PORT MAP(A => S0, B => S0, Y => NOT_S0);
+    U2 : NAND_GATE PORT MAP(A => S1, B => S1, Y => NOT_S1);
 
     -- Generate NAND outputs
-    U3 : NAND_GATE_TB PORT MAP(A => A, B => NOT_S0, Y => Y0);
-    U4 : NAND_GATE_TB PORT MAP(A => B, B => S0, Y => Y1);
-    U5 : NAND_GATE_TB PORT MAP(A => C, B => NOT_S1, Y => Y2);
-    U6 : NAND_GATE_TB PORT MAP(A => D, B => S1, Y => Y3);
+    U3 : NAND_GATE PORT MAP(A => A, B => NOT_S0, Y => Y0);
+    U4 : NAND_GATE PORT MAP(A => B, B => S0, Y => Y1);
+    U5 : NAND_GATE PORT MAP(A => C, B => NOT_S1, Y => Y2);
+    U6 : NAND_GATE PORT MAP(A => D, B => S1, Y => Y3);
 
     -- Combine outputs with NOR gate
-    U7 : NOR_GATE_TB PORT MAP(A => Y0, B => Y1, Y => Y);
-    U8 : NOR_GATE_TB PORT MAP(A => Y2, B => Y3, Y => Y);
+    U7 : NOR_GATE PORT MAP(A => Y0, B => Y1, Y => Y);
+    U8 : NOR_GATE PORT MAP(A => Y2, B => Y3, Y => Y);
 END ARCHITECTURE Behavioral;

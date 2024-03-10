@@ -13,8 +13,9 @@ ARCHITECTURE Behavioral OF MUX_4_1_TB IS
         );
     END COMPONENT;
     SIGNAL A_TB, B_TB, C_TB, D_TB, S0_TB, S1_TB : STD_LOGIC := '0';
+    SIGNAL Y_TB : STD_LOGIC;
 BEGIN
-    uut : MUX_4_1 PORT MAP(A => A_TB, B => B_TB, C => C_TB, D => D_TB, S0 => S0_TB, S1 => S1_TB);
+    uut : MUX_4_1 PORT MAP(A => A_TB, B => B_TB, C => C_TB, D => D_TB, S0 => S0_TB, S1 => S1_TB, Y => Y_TB);
     -- Stimulus Process
     stimulus : PROCESS
     BEGIN
