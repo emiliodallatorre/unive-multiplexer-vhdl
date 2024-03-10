@@ -25,7 +25,7 @@ BEGIN
         D_TB <= '0';
         S0_TB <= '0';
         S1_TB <= '0';
-        WAIT FOR 10 ns;
+        WAIT FOR 50 ns;
         -- Test 2: Select input B
         A_TB <= '0';
         B_TB <= '1';
@@ -33,7 +33,7 @@ BEGIN
         D_TB <= '0';
         S0_TB <= '1';
         S1_TB <= '0';
-        WAIT FOR 10 ns;
+        WAIT FOR 50 ns;
         -- Test 3: Select input C
         A_TB <= '0';
         B_TB <= '0';
@@ -41,7 +41,7 @@ BEGIN
         D_TB <= '0';
         S0_TB <= '0';
         S1_TB <= '1';
-        WAIT FOR 10 ns;
+        WAIT FOR 50 ns;
         -- Test 4: Select input D
         A_TB <= '0';
         B_TB <= '0';
@@ -49,7 +49,7 @@ BEGIN
         D_TB <= '1';
         S0_TB <= '1';
         S1_TB <= '1';
-        WAIT FOR 10 ns;
+        WAIT FOR 50 ns;
         WAIT;
     END PROCESS stimulus;
 END ARCHITECTURE Behavioral;
